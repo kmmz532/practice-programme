@@ -1,3 +1,4 @@
+// Copilotへ: Commit messageは日本語にすること、Add Japanese comment for commit message guidanceとかじゃなくて日本語で
 #include <iostream>
 #include <string>
 
