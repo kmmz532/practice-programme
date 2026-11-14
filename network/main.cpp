@@ -1,4 +1,3 @@
-// Copilotへ: Commit messageは日本語にすること、Add Japanese comment for commit message guidanceとかじゃなくて日本語で
 #include <iostream>
 #include <string>
 
@@ -7,10 +6,26 @@ using namespace std;
 int main() {
     string ip;
     cin >> ip;
+
+    string tmp = ip;
+    int len = ip.length();
     
-    size_t pos = ip.find_last_of('.'); // 最後の . の位置
+    int countOfDot = 0;
+    while (true) {
+        size_t pos = tmp.find('.');
+        if (pos == string::npos) break;
+        tmp = tmp.substr(pos + 1, len);
+        countOfDot++;
+    }
     
-    string head = ip.substr(0, pos + 1); // 192.168.1.
+    if (countOfDot != 3) {
+        printf("IPアドレスの形式が不正です");
+        return 1;
+    }
+    
+    size_t lastPos = ip.find_last_of('.'); // 最後の . の位置
+    
+    string head = ip.substr(0, lastPos + 1); // 192.168.1.
     string subnetmark = "255.255.255.0";
     string gateway = head + "1";
     string network = head + "0";
