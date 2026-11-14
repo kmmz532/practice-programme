@@ -7,7 +7,9 @@ int main() {
     string ip;
     cin >> ip;
     
-    string head = ip.substr(0,10); // 192.168.1.
+    size_t pos = ip.find_last_of('.'); // 最後の . の位置
+    
+    string head = ip.substr(0, pos + 1); // 192.168.1.
     string subnetmark = "255.255.255.0";
     string gateway = head + "1";
     string network = head + "0";
