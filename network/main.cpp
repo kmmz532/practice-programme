@@ -14,7 +14,14 @@ int main() {
     
     while (true) {
         size_t pos = tmp.find('.');
-        if (pos == string::npos) break;
+        if (pos == string::npos) {
+            int num = stoi(tmp);
+            if (0 > num || num > 255) {
+                printf("0～255の範囲外の数値は指定できません");
+                return 1;
+            }
+            break;
+        }
         int num = stoi(tmp.substr(0, pos));
         tmp = tmp.substr(pos + 1, len);
         
